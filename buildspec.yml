@@ -23,11 +23,10 @@ phases:
   post_build:
     commands:
       - docker push $REPOSITORY_URI:$TAG
-      - CREDENTIALS=$(aws sts get-session-token --duration-seconds 900)
-      - export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
-      - export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
-      - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
-      - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
+      - export AWS_ACCESS_KEY_ID="ASIAZVG4NP5DOHKWY26N"
+      - export AWS_SECRET_ACCESS_KEY="UV0FudjDQDhEkCt0PEbG4MWUiJabmq+qD4jxeGJs"
+      - export AWS_SESSION_TOKEN="FwoGZXIvYXdzEBsaDIt5ML4rd6lpgxfnhiLHAWEQDWvK2gzcJn/ur4lnE6kHnhdbR4HXuJPRHticS7h/jBL5h/5oyqq2h4f8a0pY69Oa+W6CHFaaMMDQ9oonqafY4N0RZetl++Q02Y1A38rZ3YDXob7Y3WqHWMPuEmAE5hoGKiMwsSOufyXJx+ESzP+FWD1Qa51yTuLyrUz+w5jLZmaueYUinHxaK9Pl4Du0jom8cdJqf9C6h4s+guCkGcWWo9LOBaI0N3nCHnkukSpzdXHQyZary7IvbdzUdY/i7QmhRomztR8oor6l9gUyLXROpbIR7T96PRkoLw9QFdUx0IWEZAetnFNbGlO1mVdOugxsjpVZJ01YPfL+PA=="
+      - export AWS_EXPIRATION=2020-05-23T13:36:33-0700
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
       - kubectl apply -f simple_jwt_api.yml
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
