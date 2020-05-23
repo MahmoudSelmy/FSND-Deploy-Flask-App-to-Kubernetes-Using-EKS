@@ -15,12 +15,7 @@ kind: Deployment
 metadata:
   name: simple-jwt-api
 spec:
-  replicas: 3
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 2
-      maxSurge: 2
+  replicas: 1
   selector:
     matchLabels:
       app: simple-jwt-api
