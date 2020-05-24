@@ -38,10 +38,10 @@ Parameters:
     MaxLength: 100
     ConstraintDescription: You must enter a GitHub personal access token
   
-  JWT_SECRET:
+  JwtSecret:
     Type: String
     NoEcho: true
-    Description: JWT_SECRET
+    Description: jwt secret
     MinLength: 3
     MaxLength: 100
     ConstraintDescription: You must enter a JWT secret
@@ -79,7 +79,7 @@ Metadata:
         Parameters:
           - GitHubUser
           - GitHubToken
-          - JWT_SECRET
+          - JwtSecret
           - GitSourceRepo
           - GitBranch
       - Label:
@@ -99,7 +99,7 @@ Metadata:
         default: Username
       GitHubToken:
         default: Access token
-      JWT_SECRET:
+      JwtSecret:
         default: JWT secret
       GitSourceRepo:
         default: Repository
@@ -330,7 +330,7 @@ Resources:
           - Name: REPOSITORY_NAME
             Value: !Ref GitSourceRepo
           - Name: JWT_SECRET
-            Value: !Ref JWT_SECRET
+            Value: !Ref JwtSecret
           - Name: REPOSITORY_BRANCH
             Value: !Ref GitBranch
           - Name: EKS_CLUSTER_NAME
