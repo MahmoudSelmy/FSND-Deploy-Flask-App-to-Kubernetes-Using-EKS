@@ -37,6 +37,14 @@ Parameters:
     MinLength: 3
     MaxLength: 100
     ConstraintDescription: You must enter a GitHub personal access token
+  
+  JWT_SECRET:
+    Type: String
+    NoEcho: true
+    Description: JWT_SECRET
+    MinLength: 3
+    MaxLength: 100
+    ConstraintDescription: You must enter a JWT secret
 
   GitHubUser:
     Type: String
@@ -71,6 +79,7 @@ Metadata:
         Parameters:
           - GitHubUser
           - GitHubToken
+          - JWT_SECRET
           - GitSourceRepo
           - GitBranch
       - Label:
@@ -90,6 +99,8 @@ Metadata:
         default: Username
       GitHubToken:
         default: Access token
+      JWT_SECRET:
+        default: JWT secret
       GitSourceRepo:
         default: Repository
       GitBranch:
@@ -318,6 +329,8 @@ Resources:
             Value: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${EcrDockerRepository}
           - Name: REPOSITORY_NAME
             Value: !Ref GitSourceRepo
+          - Name: JWT_SECRET
+            Value: !Ref JWT_SECRET
           - Name: REPOSITORY_BRANCH
             Value: !Ref GitBranch
           - Name: EKS_CLUSTER_NAME
