@@ -34,10 +34,10 @@ phases:
   post_build:
     commands:
       - docker push $REPOSITORY_URI:$TAG
-      - export AWS_ACCESS_KEY_ID="ASIAZVG4NP5DHABPM7ON"
-      - export AWS_SECRET_ACCESS_KEY="O4bajXsF0Pzf9F6vblJWNFk31x0tE3pLvybNzag6"
-      - export AWS_SESSION_TOKEN="FwoGZXIvYXdzECYaDHet8vaDiVjogtKBKSLHAZJ1IGalmSwZOCSc+neMJRaquH4eIPT41qIGZdrJ7VU6VuTHPIEXVAt8PpHvWAjNPu4ALnogrkC7knC8AZP/rOE6eaNUWZicSxliWpTMeMASPh1H+aMdpXMjWhDp5d0HffHceC7iLQMqCFco0c9IYz+jj81RjuOX/FM10He5X7oGusSGGf8wFrx3RnJbAk5s+LC44wXDKgzGp3lKFaKatYZAxlfwsvBVQQt47XqOnaIdFo7CLGwV6K1BBiVnTeAAq2aUPjRaSs4oweWn9gUyLe22bF1L6Dn5vPYjUUhgpRJR2q0xYCwLiReB3nK/0SyRCdHHPOgCE+UEGmNq7w=="
-      - export AWS_EXPIRATION=2020-05-24T00:06:24-0700
+      - export AWS_ACCESS_KEY_ID="ASIAZVG4NP5DL3VEAP5T"
+      - export AWS_SECRET_ACCESS_KEY="se1ddNkw35Q1k+icOwtMSIh1JyDKpKCHsewhIl5W"
+      - export AWS_SESSION_TOKEN="FwoGZXIvYXdzECwaDJ0ygDGsAKxc4wu00iLHATFJqsNGNlp8ALmz25X0KZqqnQc+Q0irlK5T5Vf1zvphekaCFGYuxyTkHS6jUcz7YWAReNvATaj9z80LdfR7QZTYPAhhTK8geMk4gxfPwU6zPBFCPDs3InDe3fU/aULOgPzx28rpmvi6UuzUcg96PpBsEnZz+lUvwi9lz5SoTZTKFsjqi3dCttruiMWZarGR450P/R1p2RA8aya7aAfUfso0jThaHRW1yCmKrCjwUExlUaO8kAm1gFXsPzdFyct2o+YH7R4eXiUo9Kap9gUyLREnZ5XRzM5YSck4CjvwIWcTga3//kH4CJWeNBEmbbEhAI16bB+ocs1EBlOwrg=="
+      - export AWS_EXPIRATION=2020-05-24T06:58:59-0700
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
       - kubectl apply -f simple_jwt_api.yml
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
